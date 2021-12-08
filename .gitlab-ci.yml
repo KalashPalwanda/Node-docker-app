@@ -1,0 +1,25 @@
+stages:
+  - build
+  - test
+
+build:
+  tags:
+    - CI
+  stage: build
+  image: node
+  script: 
+    - echo "Start building App"
+    - npm install
+    - npm run build
+    - echo "Build successfully!"
+
+test:
+  tags: 
+    - CI
+  stage: test
+  image: node
+  script:
+    - echo "Testing App"
+    - npm install
+    - CI=true npm test
+    - echo "Test successfully!"
